@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>Peebles Lab | Proofs</title>
+        <title>Peebles Lab | {{ info.title }}</title>
         <style type="text/css">
 h1, h2, h3, h4, h5, h6, a, p {
     font-family:sans-serif;
@@ -66,8 +66,8 @@ td.navbar:hover {
             </table>
         </div>
         <div id="comic">
-            <h2>Proofs</h2>
-            <img src="http://www.peebleslab.com/comics/100.png" alt="Proofs" title="100 comics and still stuck on the same joke! " class="comic">
+            <h2>{{ info.title }}</h2>
+            <img src="http://peebleslab.blob.core.windows.net/{{ info.comic }}" alt="{{ info.title }}" title="{{ info.alt }}" class="comic">
         </div>
         <div>
             <table class="navbar" style="height:20px">

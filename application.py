@@ -22,8 +22,7 @@ def maxcomicid():
 
 @app.route("/<int:comic_id>")
 def comic(comic_id):
-    return "DEBUG: " + str(comicinfo(comic_id))
-    # return render_template('comic.html', info=comicinfo(comic_id))
+    return render_template('comic.html', info=comicinfo(comic_id))
 
 @app.route("/")
 def hello():
