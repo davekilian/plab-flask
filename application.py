@@ -1,5 +1,6 @@
 from azure.cosmosdb.table.tableservice import TableService
 from azure.cosmosdb.table.models import Entity
+from datetime import datetime
 from flask import Flask, render_template
 from random import randint
 
@@ -47,7 +48,9 @@ def comic(comic_id):
         'url': bannerinfo.banner,
     }
 
-    return render_template('comic.html', info=info, nav=nav, banner=banner)
+    now = datetime.now()
+
+    return render_template('comic.html', info=info, nav=nav, banner=banner, now=now)
 
 @app.route("/")
 def hello():
