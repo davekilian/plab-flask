@@ -53,5 +53,5 @@ def comic(comic_id):
     return render_template('comic.html', info=info, nav=nav, banner=banner, now=now)
 
 @app.route("/")
-def hello():
+def home():
     return comic(maxcomicid())
