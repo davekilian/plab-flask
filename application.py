@@ -49,8 +49,9 @@ def comic(comic_id):
     }
 
     now = datetime.now()
+    keywords = ','.join((info.title + ' ' + info.alt).split(' '))
 
-    return render_template('comic.html', info=info, nav=nav, banner=banner, now=now, url=request.url)
+    return render_template('comic.html', info=info, nav=nav, banner=banner, now=now, keywords=keywords, url=request.url)
 
 @app.route("/")
 def home():
