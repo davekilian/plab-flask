@@ -1,13 +1,12 @@
 from azure.cosmosdb.table.tableservice import TableService
 from datetime import datetime
 from flask import Flask, render_template, request
+from os import environ
 from random import randint
 
 app = Flask(__name__)
 
-tablesvc = TableService(
-    account_name='peebleslab',
-    account_key='OxJE48VceGS4brzmrSwRwcUo3vB+q6cu+nt4I4elzlmEIcqxf28JLesGb8Qkb4060isc0MIESgcjP2H1HYIIKA==')
+tablesvc = TableService(account_name='peebleslab', account_key=environ['accountkey'])
 
 def comicinfo(comic_id = None):
     rowkey = str(comic_id).zfill(4)
