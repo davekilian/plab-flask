@@ -1,4 +1,3 @@
-
 from azure.cosmosdb.table.tableservice import TableService
 from azure.cosmosdb.table.models import Entity
 from flask import Flask, render_template
@@ -37,7 +36,15 @@ def comic(comic_id):
         'random': randint(1, maxcomicid()),
     }
 
-    return render_template('comic.html', info=info, nav=nav)
+    bannerid = randint(1, maxcomicid())
+    bannerinfo = comicinfo(bannerid)
+    banner = {
+        'id': bannerid,
+        'info': bannerinfo,
+        'url': bannerinfo.banner,
+    }
+
+    return render_template('comic.html', info=info, nav=nav, banner=banner)
 
 @app.route("/")
 def hello():
