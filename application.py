@@ -26,6 +26,9 @@ maxcomicid.value = None
 
 @app.route("/<int:comic_id>")
 def comic(comic_id):
+    comic_id = max(1, comic_id)
+    comic_id = min(comic_id, maxcomicid())
+
     info = comicinfo(comic_id)
 
     nav = { 
