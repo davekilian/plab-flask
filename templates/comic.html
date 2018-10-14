@@ -56,12 +56,12 @@ td.navbar:hover {
         <div>
             <table class="navbar">
                 <tr>
-                    <td class="navbar" align="left"><a class="navbar" href="http://www.peebleslab.com/1">&nbsp;|&lt; First</a></td>
-                    <td class="navbar" align="left"><a class="navbar" href="http://www.peebleslab.com/99">&nbsp;&lt; Back</a></td>
-                    <td class="navbar" align="center"><a class="navbar" href="http://www.peebleslab.com/28">Random</a></td>
-                    <td class="navbar" align="center"><a class="navbar" href="http://www.peebleslab.com/archive.php">Archive</a></td>
-                    <td class="navbar" align="right"><a class="navbar" href="http://www.peebleslab.com/100">Next &gt;&nbsp;</a></td>
-                    <td class="navbar" align="right"><a class="navbar" href="http://www.peebleslab.com/100">Latest &gt;|&nbsp;</a></td>
+                    <td class="navbar" align="left"><a class="navbar" href="/{{ nav.first }}">&nbsp;|&lt; First</a></td>
+                    <td class="navbar" align="left"><a class="navbar" href="/{{ nav.prev }}">&nbsp;&lt; Back</a></td>
+                    <td class="navbar" align="center"><a class="navbar" href="/{{ nav.random }}">Random</a></td>
+                    <td class="navbar" align="center"><a class="navbar" href="/archive.php">Archive</a></td>
+                    <td class="navbar" align="right"><a class="navbar" href="/{{ nav.next }}">Next &gt;&nbsp;</a></td>
+                    <td class="navbar" align="right"><a class="navbar" href="/{{ nav.last }}">Latest &gt;|&nbsp;</a></td>
                 </tr>
             </table>
         </div>
@@ -72,8 +72,8 @@ td.navbar:hover {
         <div>
             <table class="navbar" style="height:20px">
                 <tr>
-                    <td class="navbar" align="left"><a class="navbar" href="http://www.peebleslab.com/1">&nbsp;|&lt; First</a></td>
-                    <td class="navbar" align="left"><a class="navbar" href="http://www.peebleslab.com/99">&nbsp;&lt; Back</a></td>
+                    <td class="navbar" align="left"><a class="navbar" href="/{{ nav.first }}">&nbsp;|&lt; First</a></td>
+                    <td class="navbar" align="left"><a class="navbar" href="/{{ nav.prev }}">&nbsp;&lt; Back</a></td>
                     <td class="navbar" align="center" style="width:200px;height:25px;">
                         <span style="vertical-align:top;font-family:sans-serif;font-weight:bold;margin-left:auto;margin-right:auto;">
                             <a href="http://www.facebook.com/share.php?u=http://www.peebleslab.com/100">
@@ -93,8 +93,8 @@ td.navbar:hover {
                             </a>
                         </span>
                     </td>
-                    <td class="navbar" align="right"><a class="navbar" href="http://www.peebleslab.com/100">Next &gt;&nbsp;</a></td>
-                    <td class="navbar" align="right"><a class="navbar" href="http://www.peebleslab.com/100">Latest &gt;|&nbsp;</a></td>
+                    <td class="navbar" align="right"><a class="navbar" href="{{ nav.next }}">Next &gt;&nbsp;</a></td>
+                    <td class="navbar" align="right"><a class="navbar" href="{{ nav.last }}">Latest &gt;|&nbsp;</a></td>
                 </tr>
             </table>
         </div>
