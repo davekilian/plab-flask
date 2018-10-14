@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Peebles Lab | {{ info.title }}</title>
+        <style type="text/css">
+h1, h2, h3, h4, h5, h6, a, p {
+    font-family:sans-serif;
+}
+img.comic {
+    border:4px solid #042B6A;
+}
+table.navbar {
+    background-color:white;
+    margin-left:auto;
+    margin-right:auto;
+}
+a.navbar, a.navbar:visited {
+    color:white;
+    font-family:sans-serif;
+    font-weight:bold;
+    text-decoration:none;
+    margin-left:0px;
+    margin-right:0px;
+    width:100px;
+    height:20px;
+    display:block;
+}
+a.navbar:hover {
+    color:#042B6A;
+    text-decoration:underline;
+}
+td.navbar {
+    color:white;
+    background-color:#042B6A;
+    height:24px;
+    width:100px;
+    margin-left:10px;
+    margin-right:10px;
+}
+td.navbar:hover {
+    background-color:#AAAAAA;
+}
+        </style>
+        <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" >
+        <meta name="description" content="A Webcomic about Physics and Math, by Andrew Stella and David Kilian">
+        <meta name="keywords" content="peebles,lab,peebleslab,peebles lab,dave,kilian,andrew,stella,dave kilian,andrew stella,{{ info.title }},{{ info.alt }},{{ keywords }}">
+        <link rel="icon" href="http://peebleslab.blob.core.windows.net/static/favicon.png" type="image/x-icon">
+        <link rel="shortcut icon" href="http://peebleslab.blob.core.windows.net/static/favicon.png" type="image/x-icon">
+    </head>
+    <body style="text-align:center;background-color:#C9E1FF">
+        <div id="header_logo">
+            <a href="/{{ banner.id }}">
+                <img style="border-width:0px" src="http://peebleslab.blob.core.windows.net/{{ banner.url }}" alt="Peebles Lab" title="{{ banner.info.title }}">
+            </a>
+        </div>
+        <h2>The Archives</h2>
+        <table style="width:800px;margin-left:auto;margin-right:auto;border-width:3px;border-color:#042B6A;border-style:solid;background-color:#042B6A;">
+            {% for comic in info %}
+            <tr>
+                <td style="background-color:#CCCCCC;border-width:3px;border-color:#042B6A;border-style:solid;">
+                    <a href="/{{ loop.index }}">
+                        <img src="http://peebleslab.blob.core.windows.net/{{ comic.comic }}" alt="{{ comic.alt }}" class="comic" width="200" height="150" style="border-color:#CCCCCC;">
+                    </a>
+                </td>
+                <td style="background-color:#CCCCCC;border-width:3px;border-color:#042B6A;border-style:solid;height:150px;">
+                    <a href="/{{ loop.index }}" class="navbar" style="width:600px;height:150px;"><br>{{ comic.title }}<br><br><i>{{ comic.alt }}</i></a><br>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <div id="footer">
+            <h5>
+                PeeblesLab.com<br>
+                Created in honor of <a href="http://www.arlingtoncemetery.net/empeebles.htm">Admiral Edward M. Peebles</a><br>
+                Copyright &copy; David Kilian and Andrew Stella 2008-{{ now.year }}. All Rights Reserved.
+            </h5>
+            <h5>
+                You can contact the webmasters at <a href="mailto:webmaster@peebleslab.com" style="text-decoration:none;">webmaster@peebleslab.com</a>
+            </h5>
+            <h5>
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">
+                    <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/us/88x31.png">
+                </a>
+                <a href="http://www.facebook.com/pages/Peebles-Lab/101723119882935" style="text-decoration:none">
+                    <img src="http://peebleslab.blob.core.windows.net/static/facebook.png" style="border-width:0px" alt="Peebles Lab Facebook Page">
+                </a>
+            </h5>
+            <h5>Dave and Andrew hereby recognize Vince for being there</h5>
+        </div>
+    </body>
+</html>

@@ -1,5 +1,4 @@
 from azure.cosmosdb.table.tableservice import TableService
-from azure.cosmosdb.table.models import Entity
 from datetime import datetime
 from flask import Flask, render_template, request
 from random import randint
@@ -10,10 +9,13 @@ tablesvc = TableService(
     account_name='peebleslab',
     account_key='OxJE48VceGS4brzmrSwRwcUo3vB+q6cu+nt4I4elzlmEIcqxf28JLesGb8Qkb4060isc0MIESgcjP2H1HYIIKA==')
 
-def comicinfo(comic_id):
+def comicinfo(comic_id = None):
     rowkey = str(comic_id).zfill(4)
     entities = tablesvc.query_entities('comics', filter=f"PartitionKey eq 'comics' and RowKey eq '{rowkey}'")
     return next(iter(entities))
+
+def comicsinfo():
+    return iter(tablesvc.query_entities('comics', filter="PartitionKey eq 'comics'"))
 
 def maxcomicid():
     if maxcomicid.value == None:
@@ -24,6 +26,15 @@ def maxcomicid():
     return maxcomicid.value
 
 maxcomicid.value = None
+
+def pickbanner():
+    bannerid = randint(1, maxcomicid())
+    bannerinfo = comicinfo(bannerid)
+    return {
+        'id': bannerid,
+        'info': bannerinfo,
+        'url': bannerinfo.banner,
+    }
 
 @app.route("/<int:comic_id>")
 def comic(comic_id):
@@ -40,19 +51,15 @@ def comic(comic_id):
         'random': randint(1, maxcomicid()),
     }
 
-    bannerid = randint(1, maxcomicid())
-    bannerinfo = comicinfo(bannerid)
-    banner = {
-        'id': bannerid,
-        'info': bannerinfo,
-        'url': bannerinfo.banner,
-    }
-
     now = datetime.now()
     keywords = ','.join((info.title + ' ' + info.alt).split(' '))
 
-    return render_template('comic.html', info=info, nav=nav, banner=banner, now=now, keywords=keywords, url=request.url)
+    return render_template('comic.html', info=info, nav=nav, banner=pickbanner(), now=now, keywords=keywords, url=request.url)
 
 @app.route("/")
 def home():
     return comic(maxcomicid())
+
+@app.route("/archive")
+def archive():
+    return render_template('archive.html', info=comicsinfo(), banner=pickbanner(), now=datetime.now(), url=request.url)
